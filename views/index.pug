@@ -7,4 +7,12 @@ block content
     br
     br
     button(type="submit") ボート作成
+    ul
+      each boardItem in boardList
+        li
+          div
+            p #{boardItem.title}
+            p #{boardItem.created_at}
+
+
 

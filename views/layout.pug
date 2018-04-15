@@ -7,4 +7,10 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    if (typeof user !== 'undefined')
+      a(href="/logout") ログアウト
+    else
+      a(href="/register") 会員登録
+      div
+      a(href="/login") ログイン
     block content

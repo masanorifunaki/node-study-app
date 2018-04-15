@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  p #{title}
+  if (messageList.length)
+    div
+      ul
+        each messageItem in messageList
+          li
+            div
+              p #{messageItem.message}
+              p #{messageItem.created_at}
+  form(action=`/boards/${board.board_id}`, method="post")
+    input(type="text" name="message" required)
+    button(type="submit") 投稿
+  a(href="/") TOPへ戻る

@@ -10,9 +10,9 @@ block content
     ul
       each boardItem in boardList
         li
-          div
+          a(href=`/boards/${boardItem.board_id}`)
             p #{boardItem.title}
-            p #{boardItem.created_at}
+          p #{boardItem.created_at}
 
 
 

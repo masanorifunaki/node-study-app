@@ -1,17 +1,18 @@
 extends layout
 
 block content
-  p #{title}
-  form(action="/login", method="post")
-    span Eメール
-    input(type="email" name="email" required)
+  h1 #{title}
+  form(action="/login", method="post").form-group
+    label Eメール
+    input(type="email" name="email" required).form-control
     br
     br
-    span パスワード
-    input(type="password" name="password" required)
+    label(for="") パスワード
+    input(type="password" name="password" required).form-control
     br
     br
-    button(type="submit") ログイン
+    button(type="submit").btn.btn-primary ログイン
   if(typeof noUser !== 'undefined')
-    p #{noUser}
-  a(href="/") TOPへ戻る
+    p.alert.alert-danger #{noUser}
+  div.text-right
+    a(href="/") TOPへ戻る

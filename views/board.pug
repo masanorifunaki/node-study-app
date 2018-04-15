@@ -1,22 +1,22 @@
 extends layout
 
 block content
-  p #{title}
-  if(messageList)
-    div
-      ul
-        each messageItem in messageList
-          li
-            div
-              p #{messageItem.message}
-              p #{messageItem.user_name} #{messageItem.created_at}
-              if (messageItem.image_path)
-                a(href=`${messageItem.image_path}` style=`background-image: url(${messageItem.image_path})`).message__image
-  form(action=`/boards/${board.board_id}`, method="post" enctype="multipart/form-data")
-    input(type="text" name="message" required)
-    button(type="submit") 投稿
-    div
-      input(type="file" name="image_file")
   if(typeof user !== 'undefined')
-    p #{user.user_name} さんとしてログインしています
-  a(href="/") TOPへ戻る
+    div.alert.alert-info
+      span #{user.user_name} さんとしてログインしています
+  h1.text-center.font-weight-light #{title}
+  if(messageList)
+    each messageItem in messageList
+      div.shadow-lg.p-3.mb-5.bg-white.rounded
+        p #{messageItem.message}
+        p #{messageItem.user_name} #{messageItem.created_at}
+        if (messageItem.image_path)
+          img(src=`${messageItem.image_path}`, alt="").rounded-circle
+  form(action=`/boards/${board.board_id}`, method="post" enctype="multipart/form-data").form-group
+    input(type="text" name="message" required).form-control
+    br
+    input(type="file" name="image_file").form-control-file
+    br
+    button(type="submit").btn.btn-lg.btn-primary 投稿
+  div.text-right
+    a(href="/") TOPへ戻る

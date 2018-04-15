@@ -1,21 +1,22 @@
 extends layout
 
 block content
-  p #{title}
-  form(action="/register", method="post")
-    span ユーザー名
-    input(type="text" name="user_name" required)
+  h1 #{title}
+  form(action="/register", method="post").form-group
+    label ユーザー名
+    input(type="text" name="user_name" required).form-control
     br
     br
-    span Eメール
-    input(type="email" name="email" required)
+    label Eメール
+    input(type="email" name="email" required).form-control
     br
     br
-    span パスワード
-    input(type="password" name="password" required)
+    label パスワード
+    input(type="password" name="password" required).form-control
     br
     br
-    button(type="submit") 新規会員登録
+    button(type="submit").btn.btn-primary 新規会員登録
   if(typeof emailExists !== 'undefined')
-    p #{emailExists}
-  a(href="/") TOPへ戻る
+    p.alert.alert-danger #{emailExists}
+  div.text-right
+    a(href="/") TOPへ戻る

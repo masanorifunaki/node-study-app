@@ -13,4 +13,6 @@ block content
   form(action=`/boards/${board.board_id}`, method="post")
     input(type="text" name="message" required)
     button(type="submit") 投稿
+  if(typeof user !== 'undefined')
+    p #{user.user_name} さんとしてログインしています
   a(href="/") TOPへ戻る
